@@ -17,6 +17,7 @@ import { authAtom } from "../../../recoil/authAtom";
 import { useRecoilState } from "recoil";
 import axios from "axios";
 
+
 const Book = ({ setIsLoading, setIsModalOpen }: any) => {
   const methods = useForm();
   const [auth, setAuth] = useRecoilState(authAtom);
@@ -59,13 +60,15 @@ const Book = ({ setIsLoading, setIsModalOpen }: any) => {
         date: changeDateFormat(data?.date),
       };
 
- 
       console.log(updatedData);
 
-      const res = await axios.post("http://localhost:9000/api/v1/test", updatedData);
+      const res = await axios.post(
+        "http://localhost:9000/api/v1/test",
+        updatedData
+      );
       if (res?.status === 201) {
         // localStorage.setItem("token", JSON.stringify(res?.data?.token));
-        alert()
+        alert();
       }
       setIsLoading(false);
     } catch (error) {
@@ -73,6 +76,8 @@ const Book = ({ setIsLoading, setIsModalOpen }: any) => {
       // if()
     }
   };
+
+
 
   return (
     <div className="flex justify-center items-center w-full bg-gray-100 rounded p-4">
@@ -85,6 +90,13 @@ const Book = ({ setIsLoading, setIsModalOpen }: any) => {
               options={sportsOption}
               required
             />
+
+            {/* <RHFDatePicker
+              pastDate={false}
+              disabled={false}
+              label='Loan approval date'
+              name='loanApprovedDate'
+            /> */}
           </div>
           <div className=" w-full">
             <RHFTextField
@@ -143,3 +155,4 @@ const Book = ({ setIsLoading, setIsModalOpen }: any) => {
 };
 
 export default React.memo(Book);
+

@@ -161,8 +161,12 @@ const RHFTextField: React.FC<TextFieldProps> = ({
         helperText={Boolean(errors[name]) ? helperText : ""}
         variant={variant ?? "outlined"}
         InputLabelProps={InputLabelProps}
-        InputProps={InputProps}
-        inputProps={inputProps}
+        InputProps={InputProps} 
+       
+        inputProps={{
+          min: pastDate == true ? null : materialDateInput,
+        }}
+
         className={className}
         placeholder={placeholder ?? ""}
         label={shrinkLabel}

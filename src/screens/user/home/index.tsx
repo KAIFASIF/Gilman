@@ -61,9 +61,10 @@ const Home = () => {
         <div className="w-full bg-white">
           <Navbar setIsModalOpen={setIsModalOpen} />
         </div>
-        <div className="bg-green-400 grid grid-cols-2  mt-10">
+        <div className="bg-gray-200 grid grid-cols-2  mt-10 p-10">
           {/* <Booked setIsLoading={setIsLoading} /> */}
-          <Book setIsLoading={setIsLoading} setIsModalOpen={setIsModalOpen} />
+          <Book />
+          {/* <Book setIsLoading={setIsLoading} setIsModalOpen={setIsModalOpen} /> */}
           <Modal
             isModalOpen={isModalOpen}
             setIsModalOpen={setIsModalOpen}
