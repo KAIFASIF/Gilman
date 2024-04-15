@@ -19,7 +19,6 @@ import {
   convertTo24Hour,
   handleToastMessage,
   isValidTime24,
-  todaysCurrentTime,
   todaysDate,
 } from "../../../utilities/utils";
 import Layout from "../../../components/Layout";
