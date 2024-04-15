@@ -1,41 +1,29 @@
 import React, { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-// import RHFTextField from "../../libraries/form/RHFTextField";
+
 import axios from "axios";
 import Layout from "../../components/Layout";
 import RHFTextField from "../../libraries/form-fields/RHFTextField";
 import Button from "../../components/Button";
 import { authAtom } from "../../recoil/authAtom";
 import { useSetRecoilState } from "recoil";
-// import { useSetRecoilState } from "recoil";
-// import { authAtom } from "../../recoil/authAtom";
-// import Toast from "../../components/snackbar";
-// import Layout from "../../components/Layout";
-// import Button from "../../components/button";
 
 const Signin = ({setIsModalOpen}:any) => {
-  const navigate = useNavigate();
   const setAuth = useSetRecoilState(authAtom);
   const methods = useForm();
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  // const [open, setOpen] = useState<boolean>(false);
-  // const [message, setMessage] = useState<string>("");
-  // const [severity, setSeverity] = useState<"success" | "error">("success");
-  // const handleToast = () => setOpen(false);
+ 
 
   const onSubmit = async (data: any) => {
     const updatedData = { ...data, mobile: parseInt(data?.mobile) };
     try {
       const res = await axios.post("http://localhost:9000/signin", updatedData);
       if (res?.status === 200) {
-        // localStorage.setItem("token", JSON.stringify(res?.data?.token));
         setAuth({
           isLoggedin: true,
           user: res?.data,
         });
         setIsModalOpen(false)
-        // navigate("/");
       }
       setIsLoading(false);
     } catch (error) {}

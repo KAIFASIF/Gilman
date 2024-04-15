@@ -1,7 +1,7 @@
 import React, { useEffect, ChangeEvent } from "react";
 import RHFTextField from "../../../libraries/form-fields/RHFTextField";
 import { FormProvider, useForm } from "react-hook-form";
-import { changeDateFormat, todaysDate } from "../../../utilities/utils";
+import {  todaysDate } from "../../../utilities/utils";
 
 interface filterSearchProps {
   fetchBookedSlots: (date: string) => void;
