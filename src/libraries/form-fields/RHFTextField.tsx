@@ -109,24 +109,6 @@ const RHFTextField: React.FC<TextFieldProps> = ({
 
   const labelName = name.split(".")[1];
 
-  // useEffect(() => {
-  //   hadleError();
-  // }, [errors]);
-
-  // const hadleError = () => {
-  //   console.log(errors);
-  //   if (Object.keys(errors).length > 0) {
-  //     const errorArray = errors[configName as keyof Errors];
-  //     if (Array.isArray(errorArray)) {
-  //       const labelName = name.split(".")[1];
-  //       if (typeof index !== "undefined" && errorArray.length > index) {
-  //         setErrorMsg(errorArray[index]?.[labelName]?.message);
-  //         console.log("errorsddddd: ", errorArray[index]?.[labelName]?.message);
-  //       }
-  //     }
-  //   }
-  // };
-
   if (pattern) {
     rules["pattern"] = {
       value: new RegExp(pattern),
@@ -161,12 +143,8 @@ const RHFTextField: React.FC<TextFieldProps> = ({
         helperText={Boolean(errors[name]) ? helperText : ""}
         variant={variant ?? "outlined"}
         InputLabelProps={InputLabelProps}
-        InputProps={InputProps} 
-       
-        inputProps={{
-          min: pastDate == true ? null : materialDateInput,
-        }}
-
+        InputProps={InputProps}
+        inputProps={inputProps}
         className={className}
         placeholder={placeholder ?? ""}
         label={shrinkLabel}

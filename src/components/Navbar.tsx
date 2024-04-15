@@ -1,32 +1,15 @@
-// import React from "react";
-// import Button from "./Button";
-
-// const Navbar = ({ setIsModalOpen }: any) => {
-//   return (
-//     <div className="w-full p-10 bg-white">
-//       <Button label="Siginin" onClick={() => setIsModalOpen(true)} />
-//       <Button label="Signup" onClick={() => setIsModalOpen(true)} />
-//     </div>
-//   );
-// };
-
-// export default React.memo(Navbar);
-
-import React, { useState } from "react";
+import React from "react";
 import { useRecoilState } from "recoil";
 
 import { Avatar } from "@mui/material";
 import { authAtom } from "../recoil/authAtom";
-import Layout from "./Layout";
+import { Link } from "react-router-dom";
 
 const Navbar = ({ setIsModalOpen }: any) => {
   const [auth, setAuth] = useRecoilState(authAtom);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const signout = () => {
-    setIsLoading(true);
     setTimeout(() => {
-      setIsLoading(false);
       setAuth({
         isLoggedin: false,
         user: null,
@@ -41,19 +24,22 @@ const Navbar = ({ setIsModalOpen }: any) => {
           <h1 className=" text-4xl font-semibold">{auth?.partnerName}</h1>
         </div>
         <div className=" hidden lg:flex">
+          <Link className="mx-5 mt-2 hover:font-semibold" to="/slots">
+            Slots
+          </Link>
           {!auth?.isLoggedin && (
             <>
-              <button className="mx-5" onClick={() => setIsModalOpen(true)}>
+              <button className="mx-5 hover:font-semibold" onClick={() => setIsModalOpen(true)}>
                 Signin
               </button>
-              <button className="mx-5" onClick={() => setAuth("")}>
+              <button className="mx-5 hover:font-semibold" onClick={() => setAuth("")}>
                 Signup
               </button>
             </>
           )}
           {auth?.isLoggedin && (
             <>
-              <button className="mx-5" onClick={signout}>
+              <button className="mx-5 hover:font-semibold" onClick={signout}>
                 Signout
               </button>
               <h1 className="mr-4 mt-1 text-2xl text-green-600 ">
