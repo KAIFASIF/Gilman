@@ -13,7 +13,6 @@ const Slots = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
-    console.log(urlDate);
     fetchBookedSlots(urlDate ? urlDate : todaysDate());
   }, []);
 

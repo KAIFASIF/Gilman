@@ -7,7 +7,7 @@ interface buttonProps {
   type?: "button" | "submit" | "reset" | undefined;
   onClick: () => void;
   disabled?: boolean;
-  children?: any;
+  children?: React.ReactNode;
   labelClass?: string;
 }
 

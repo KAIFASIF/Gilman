@@ -4,31 +4,33 @@ import {
   createRoutesFromElements,
   RouterProvider,
   Route,
-  Outlet,
   Navigate,
 } from "react-router-dom";
-import { authAtom } from "./recoil/authAtom";
 import { useRecoilValue } from "recoil";
+import { authAtom } from "./recoil/authAtom";
+import ExtrasUser from "./screens/user/ExtrasUser";
+import AuthLayout from "./recoil/AuthLayout";
 
 const App = () => {
-  // const auth = { role: "ROLE_USER" };
   const auth = useRecoilValue(authAtom);
 
+
+  //admin routes
+  const Dashboard = lazy(() => import("./screens/admin/dashboard"));
+  const Adminss = lazy(() => import("./screens/admin/adminscren"));
+
+  // user routes
   const Home = lazy(() => import("./screens/user/home"));
   const Slots = lazy(() => import("./screens/user/slots"));
-  const CreateSlot = lazy(() => import("./screens/user/createslot"));
-
-  // const Test = lazy(() => import("./screens/test"));
-  const Dashboard = lazy(() => import("./screens/admin/dashboard"));
-  const Dashboard1 = lazy(() => import("./screens/admin/dashboard"));
+  const BookSlot = lazy(() => import("./screens/user/bookSlot"));
 
   return (
     <RouterProvider
       router={createBrowserRouter(
         createRoutesFromElements(
           <Route>
-            {auth?.user?.role === "ROLE_ADMIN" ? (
-              <Route path="/" element={<Outlet />}>
+            {auth?.isLoggedin && auth?.user?.role === "ROLE_ADMIN" ? (
+              <Route path="/" element={<AuthLayout />}>
                 <Route
                   index
                   element={
@@ -37,20 +39,18 @@ const App = () => {
                     </Suspense>
                   }
                 />
-
                 <Route
-                  path="/a"
+                  path="/admins"
                   element={
                     <Suspense>
-                      <Dashboard1 />
+                      <Adminss />
                     </Suspense>
                   }
                 />
-
                 <Route path="*" element={<Navigate to="/" replace />} />
               </Route>
-            ) : auth?.user?.role === "ROLE_USER" ? (
-              <Route path="/" element={<Outlet />}>
+            ) : auth?.isLoggedin && auth?.user?.role === "ROLE_USER" ? (
+              <Route path="/" element={<AuthLayout />}>
                 <Route
                   index
                   element={
@@ -60,22 +60,21 @@ const App = () => {
                   }
                 />
                 <Route
-                  path="/book-slot"
+                  path="book-slot"
                   element={
                     <Suspense>
-                      <CreateSlot />
+                      <BookSlot />
                     </Suspense>
                   }
                 />
-                {/* <Route
-                  path="/slots"
+                <Route
+                  path="e"
                   element={
                     <Suspense>
-                      <Slots />
+                      <ExtrasUser />
                     </Suspense>
                   }
-                /> */}
-
+                />
                 <Route
                   path="/slots"
                   element={
@@ -96,7 +95,7 @@ const App = () => {
                 <Route path="*" element={<Navigate to="/" replace />} />
               </Route>
             ) : (
-              <Route path="/" element={<Outlet />}>
+              <Route path="/" element={<AuthLayout />}>
                 <Route
                   index
                   element={
@@ -105,6 +104,33 @@ const App = () => {
                     </Suspense>
                   }
                 />
+                <Route
+                  path="book-slot"
+                  element={
+                    <Suspense>
+                      <BookSlot />
+                    </Suspense>
+                  }
+                />
+
+                <Route
+                  path="/slots"
+                  element={
+                    <Suspense>
+                      <Slots />
+                    </Suspense>
+                  }
+                >
+                  <Route
+                    path=":date"
+                    element={
+                      <Suspense>
+                        <Slots />
+                      </Suspense>
+                    }
+                  />
+                </Route>
+
                 <Route path="*" element={<Navigate to="/" replace />} />
               </Route>
             )}

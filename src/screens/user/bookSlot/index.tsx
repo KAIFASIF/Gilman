@@ -22,13 +22,12 @@ import {
   todaysDate,
 } from "../../../utilities/utils";
 import Layout from "../../../components/Layout";
-import Navbar from "../../../components/Navbar";
 import Modal from "../../../components/Modal";
 import Signin from "../../signin";
 import Toast from "../../../components/taost";
 import { useNavigate } from "react-router-dom";
 
-const CreateSlot = () => {
+const BookSlot = () => {
   const methods = useForm();
   const navigate = useNavigate();
   const auth = useRecoilValue(authAtom);
@@ -39,6 +38,19 @@ const CreateSlot = () => {
   const [message, setMessage] = useState<string>("");
   const [severity, setSeverity] = useState<"success" | "error">("success");
   const [timeoutId, setTimeoutId] = useState<any>(null);
+
+  const handleClearTimeout = () => {
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+      setTimeoutId(null);
+    }
+  };
+
+  useEffect(() => {
+    return () => {
+      handleClearTimeout();
+    };
+  }, []);
 
   useEffect(() => {
     return () => {
@@ -97,13 +109,11 @@ const CreateSlot = () => {
           "success",
           true
         );
-        if (timeoutId) {
-          clearTimeout(timeoutId);
-        }
-        const id = setTimeout(
-          () => navigate(`/slots?date=${data?.date}`),
-          2000
-        );
+
+        const id = setTimeout(() => {
+          navigate(`/slots?date=${data?.date}`);
+        }, 2000);
+
         setTimeoutId(id);
       }
 
@@ -142,8 +152,6 @@ const CreateSlot = () => {
       </div>
 
       <div className="bg-white p-10 h-screen">
-        <Navbar setIsModalOpen={setIsModalOpen} />
-
         <div className="bg-gray-200 grid grid-cols-2  mt-10 p-10">
           <div className="flex justify-center items-center w-full bg-gray-100 rounded p-4">
             <FormProvider {...methods}>
@@ -228,4 +236,4 @@ const CreateSlot = () => {
   );
 };
 
-export default React.memo(CreateSlot);
+export default React.memo(BookSlot);
