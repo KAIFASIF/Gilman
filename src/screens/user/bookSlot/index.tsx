@@ -27,7 +27,7 @@ import Signin from "../../signin";
 import Toast from "../../../components/taost";
 import { useNavigate } from "react-router-dom";
 import { createSlot, saveTransaction } from "../../../services/bookapi";
-import Payment from "./Payment";
+
 import useRazorpay, { RazorpayOptions } from "react-razorpay";
 
 const BookSlot = () => {
@@ -101,16 +101,7 @@ const BookSlot = () => {
         date: changeDateFormat(data?.date),
       };
 
-      // const token =  "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJhc2lmMjYiLCJpYXQiOjE3MTMzNzM0NTQsImV4cCI6MTcxMzQ1OTg1NH0.Es3DRGD5ppKi6CbtX9aK0GO3WAJTjICIUn4HP5mz9E1L1JzOWnl3lFurIolZeq_y"
-      // const res = await axios.post(
-      //   "http://localhost:9000/api/v1/user/book-slot",
-      //   updatedData,
-      //   {
-      //     headers: {
-      //         Authorization: `Bearer ${token}`,
-      //     },
-      // }
-      // );
+      
       const res = await createSlot(updatedData);
       if (res?.status === 201) {
         // handleToastMessage(
@@ -126,17 +117,10 @@ const BookSlot = () => {
         //   navigate(`/slots?date=${data?.date}`);
         // }, 2000);
 
-        // setTimeoutId(id);
+        // setTimeoutId(id);        
 
-        
-
-        handlePayments(res?.data,updatedData )
-      //   const id = setTimeout(() => {
-      //     navigate(`/slots?date=${data?.date}`);
-      //   }, 2000);
-
-      //   setTimeoutId(id);
-      // }
+        handlePayments(res?.data,updatedData)
+     
 
       }
 
