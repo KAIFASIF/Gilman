@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 
 import FilterSearch from "./FilterSearch";
 import { renderBookedSlots } from "./utils";

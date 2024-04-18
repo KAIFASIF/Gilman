@@ -12,11 +12,9 @@ const Navbar = () => {
   const [isSignupModalOpen, setIsSignupModalOpen] = useState<boolean>(false);
   const [isSigninModalOpen, setIsSigninModalOpen] = useState<boolean>(false);
 
-  // const navigate = useNavigate();
-
   const signout = () => {
     setTimeout(() => {
-      localStorage.clear()
+      localStorage.clear();
       setAuth({
         isLoggedin: false,
         user: null,
