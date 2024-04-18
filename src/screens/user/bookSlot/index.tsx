@@ -26,6 +26,9 @@ import Modal from "../../../components/Modal";
 import Signin from "../../signin";
 import Toast from "../../../components/taost";
 import { useNavigate } from "react-router-dom";
+import { createSlot, saveTransaction } from "../../../services/bookapi";
+import Payment from "./Payment";
+import useRazorpay, { RazorpayOptions } from "react-razorpay";
 
 const BookSlot = () => {
   const methods = useForm();
@@ -38,6 +41,7 @@ const BookSlot = () => {
   const [message, setMessage] = useState<string>("");
   const [severity, setSeverity] = useState<"success" | "error">("success");
   const [timeoutId, setTimeoutId] = useState<any>(null);
+  const [Razorpay] = useRazorpay();
 
   const handleClearTimeout = () => {
     if (timeoutId) {
@@ -88,6 +92,7 @@ const BookSlot = () => {
       setIsLoading(true);
       const updatedData = {
         ...data,
+        amount:700,
         endTime,
         name: auth?.user?.name,
         mobile: auth?.user?.mobile,
@@ -96,25 +101,43 @@ const BookSlot = () => {
         date: changeDateFormat(data?.date),
       };
 
-      const res = await axios.post(
-        "http://localhost:9000/api/v1/test",
-        updatedData
-      );
+      // const token =  "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJhc2lmMjYiLCJpYXQiOjE3MTMzNzM0NTQsImV4cCI6MTcxMzQ1OTg1NH0.Es3DRGD5ppKi6CbtX9aK0GO3WAJTjICIUn4HP5mz9E1L1JzOWnl3lFurIolZeq_y"
+      // const res = await axios.post(
+      //   "http://localhost:9000/api/v1/user/book-slot",
+      //   updatedData,
+      //   {
+      //     headers: {
+      //         Authorization: `Bearer ${token}`,
+      //     },
+      // }
+      // );
+      const res = await createSlot(updatedData);
       if (res?.status === 201) {
-        handleToastMessage(
-          setMessage,
-          setSeverity,
-          setOpen,
-          "Slot booked sucessfully",
-          "success",
-          true
-        );
+        // handleToastMessage(
+        //   setMessage,
+        //   setSeverity,
+        //   setOpen,
+        //   "Slot booked sucessfully",
+        //   "success",
+        //   true
+        // );
 
-        const id = setTimeout(() => {
-          navigate(`/slots?date=${data?.date}`);
-        }, 2000);
+        // const id = setTimeout(() => {
+        //   navigate(`/slots?date=${data?.date}`);
+        // }, 2000);
 
-        setTimeoutId(id);
+        // setTimeoutId(id);
+
+        
+
+        handlePayments(res?.data,updatedData )
+      //   const id = setTimeout(() => {
+      //     navigate(`/slots?date=${data?.date}`);
+      //   }, 2000);
+
+      //   setTimeoutId(id);
+      // }
+
       }
 
       setIsLoading(false);
@@ -132,6 +155,54 @@ const BookSlot = () => {
       }
     }
   };
+
+
+  const createTranscation =async (data:any)=>{
+    try {
+      console.log("sdsdsdssd: ", data)
+      const res = await saveTransaction(data)
+    } catch (error:any) {
+      
+    }
+  }
+
+  const handlePayments =async (data:any, newData:any) => {
+    const { id, amount}= data
+    try {
+        const options: RazorpayOptions = {
+            key: "rzp_test_gSK9TTIhMBYv7S",
+          amount: "500",
+          currency: "INR",
+          name: "Gilman sprtts",
+          description: "Test Transaction",
+          image: "https://example.com/your_logo",
+          order_id: id,
+          handler: (res) => {
+            createTranscation({...res, ...newData})
+            console.log(res);
+          },
+          prefill: {
+            name: "Kaif",
+            email: "a@example.com",
+            contact: "9700174021",
+          },
+          notes: {
+            address: "Razorpay Corporate Office",
+          },
+          theme: {
+            color: "#3399cc",
+          },
+        };
+    
+        const rzpay = new Razorpay(options);
+        rzpay.open();
+        
+        
+    } catch (error:any) {
+        alert("paymant failedsss")
+        
+    }
+  }
 
   return (
     <Layout isLoading={isLoading}>

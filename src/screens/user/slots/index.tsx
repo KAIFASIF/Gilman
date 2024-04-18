@@ -6,6 +6,7 @@ import { renderBookedSlots } from "./utils";
 import { todaysDate } from "../../../utilities/utils";
 import Layout from "../../../components/Layout";
 import { useLocation } from "react-router-dom";
+import { fetchSlots } from "../../../services/bookapi";
 
 const Slots = () => {
   const urlDate = new URLSearchParams(useLocation().search).get("date");
@@ -20,9 +21,12 @@ const Slots = () => {
     setIsLoading(true);
     try {
       if (!date) return;
-      const res = await axios.get(
-        `http://localhost:9000/api/v1/ground?date=${date}`
-      );
+      // const res = await axios.get(
+      //   `http://localhost:9000/api/v1/ground?date=${date}`
+      // );
+
+      const res = await fetchSlots(date);
+
       if (res?.status === 200) {
         setData(renderBookedSlots(res?.data));
       }

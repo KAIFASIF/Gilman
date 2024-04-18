@@ -25,6 +25,7 @@ const Signin = ({ setIsModalOpen }: any) => {
     try {
       const res = await axios.post("http://localhost:9000/signin", updatedData);
       if (res?.status === 200) {
+        localStorage.setItem("token", JSON.stringify(res?.data?.token));   
         setAuth({
           isLoggedin: true,
           user: res?.data,

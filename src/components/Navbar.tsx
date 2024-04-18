@@ -16,6 +16,7 @@ const Navbar = () => {
 
   const signout = () => {
     setTimeout(() => {
+      localStorage.clear()
       setAuth({
         isLoggedin: false,
         user: null,
