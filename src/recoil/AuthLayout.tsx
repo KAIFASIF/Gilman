@@ -1,13 +1,16 @@
-import Navbar from "../components/Navbar";
-import { Outlet } from "react-router-dom";
 
-const AuthLayout = () => {
-  return (
-    <div>
-      <Navbar />
-      <Outlet />
-    </div>
-  );
-};
+// import { Outlet } from "react-router-dom";
+// import Navbar from "../components/navbar";
 
-export default AuthLayout;
+
+
+// const AuthLayout = () => {
+//   return (
+//     <div>
+//       <Navbar />
+//       <Outlet />
+//     </div>
+//   );
+// };
+
+// export default AuthLayout;

@@ -35,7 +35,7 @@ const FilterSearch: React.FC<filterSearchProps> = ({
   return (
     <FormProvider {...methods}>
       <div className="flex justify-end items-center w-full ">
-        <div className="w-1/3">
+        <div className="w-1/2">
           <RHFTextField
             name="date"
             type="date"

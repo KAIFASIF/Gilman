@@ -150,8 +150,8 @@ const BookSlot = () => {
         </Modal>
       </div>
 
-      <div className="bg-white p-10 h-screen">
-        <div className="bg-gray-200 grid grid-cols-2  mt-10 p-10">
+      <div className="bg-white p-2 lg:p-8 h-screen">
+        <div className="bg-gray-200 grid grid-cols-1 lg:grid-cols-2  p-2 md:p-8 ">
           <div className="flex justify-center items-center w-full bg-gray-100 rounded p-4">
             <FormProvider {...methods}>
               <div className="w-full space-y-4">

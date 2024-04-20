@@ -6,6 +6,7 @@ import { todaysDate } from "../../../utilities/utils";
 import Layout from "../../../components/Layout";
 import { useLocation } from "react-router-dom";
 import { fetchSlots } from "../../../services/bookapi";
+import { timeSlots } from "./data";
 
 const Slots = () => {
   const urlDate = new URLSearchParams(useLocation().search).get("date");
@@ -20,9 +21,6 @@ const Slots = () => {
     setIsLoading(true);
     try {
       if (!date) return;
-      // const res = await axios.get(
-      //   `http://localhost:9000/api/v1/ground?date=${date}`
-      // );
 
       const res = await fetchSlots(date);
 
@@ -32,20 +30,21 @@ const Slots = () => {
       setIsLoading(false);
     } catch (error: any) {
       setIsLoading(false);
+      setData(timeSlots)
     }
   };
 
   return (
     <Layout isLoading={isLoading}>
       <div className="flex justify-center ">
-        <div className="flex flex-col w-[80%] py-10">
+        <div className="flex flex-col w-[90%] md:w-[80%] h-full">
           <div className="w-full">
             <FilterSearch
               fetchBookedSlots={fetchBookedSlots}
               urlDate={urlDate}
             />
           </div>
-          <div className="bg-gray-100 grid grid-cols-8 gap-4 w-full p-10 shadow-xl">
+          <div className="bg-gray-100 grid grid-cols-3 lg:grid-cols-8 gap-4 w-full p-4 lg:p-10 shadow  rounded overflow-auto h-[90vh]">
             {data.length > 0 &&
               data.map((ele: any, index: number) => (
                 <div

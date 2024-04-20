@@ -3,10 +3,10 @@ import Button from "../../../components/Button";
 import { useNavigate } from "react-router-dom";
 
 const BookNowSection = ({ imageSrc }: any) => {
-    const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
-    <div className="w-[40%] bg-gray-100 p-2">
-      <div className="w-full h-[30vh]">
+    <div className="bg-gray-100 p-2">
+      <div className="w-full">
         <img
           src={imageSrc}
           alt="playing image"
@@ -16,7 +16,7 @@ const BookNowSection = ({ imageSrc }: any) => {
       <div className="">
         <Button
           label="Book now"
-          onClick={() => navigate('/book-slot')}
+          onClick={() => navigate("/book-slot")}
           className="border-none rounded-none bg-green-600"
         />
       </div>
