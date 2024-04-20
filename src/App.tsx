@@ -167,8 +167,8 @@ const App = () => {
 
 
     //admin routes
-    const Dashboard = lazy(() => import("./screens/admin/dashboard"));
-    const Adminss = lazy(() => import("./screens/admin/adminscren"));
+    // const Dashboard = lazy(() => import("./screens/admin/dashboard"));
+    // const Adminss = lazy(() => import("./screens/admin/adminscren"));
   
     // user routes
     const Home = lazy(() => import("./screens/user/home"));
