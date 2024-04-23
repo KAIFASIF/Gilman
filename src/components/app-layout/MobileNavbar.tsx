@@ -35,7 +35,7 @@ const MobileNavbar = ({
             {auth?.user?.name && auth?.user?.name.substring(0, 1).toUpperCase()}
           </Avatar>
           <h1 className="mr-4 mt-1 text-2xl text-green-600 ml-4">
-            {auth?.user?.name && auth?.user}d{" "}
+            {auth?.user?.name}
           </h1>
         </div>
 

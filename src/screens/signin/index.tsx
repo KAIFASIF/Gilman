@@ -5,14 +5,14 @@ import Layout from "../../components/Layout";
 import RHFTextField from "../../libraries/form-fields/RHFTextField";
 import Button from "../../components/Button";
 import { authAtom } from "../../recoil/authAtom";
-import { useSetRecoilState } from "recoil";
+import { useRecoilState } from "recoil";
 import { mobileRegx, passwordRegx } from "../../utilities/regex";
 import { handleToastMessage } from "../../utilities/utils";
 import Toast from "../../components/taost";
 
 const Signin = ({ setIsModalOpen }: any) => {
   const methods = useForm();
-  const setAuth = useSetRecoilState(authAtom);
+  const [auth, setAuth] = useRecoilState(authAtom);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [open, setOpen] = useState<boolean>(false);
   const [message, setMessage] = useState<string>("");
@@ -23,14 +23,23 @@ const Signin = ({ setIsModalOpen }: any) => {
   const onSubmit = async (data: any) => {
     const updatedData = { ...data, mobile: parseInt(data?.mobile) };
     try {
-      const res = await axios.post("http://localhost:9000/api/v1/user/signin", updatedData);
+      const res = await axios.post(
+        "http://localhost:9000/api/v1/user/signin",
+        updatedData
+      );
       if (res?.status === 200) {
         localStorage.setItem("token", JSON.stringify(res?.data?.token));
         setAuth({
+          ...auth,
           isLoggedin: true,
-          role:res?.data?.role,
-          user: res?.data,
+          user: {
+            id: res?.data?.id,
+            mobile: res?.data?.mobile,
+            name: res?.data?.name,
+            role: res?.data?.role,
+          },
         });
+
         setIsModalOpen(false);
       }
       setIsLoading(false);

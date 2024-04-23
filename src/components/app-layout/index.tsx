@@ -15,10 +15,14 @@ const Navbar = () => {
   const signout = () => {
     setTimeout(() => {
       localStorage.clear();
-      setAuth({ ...auth, isLoggedin: false, role: null, user: null });
+      setAuth({
+        ...auth,
+        isLoggedin: false,
+        user: { id: null, mobile: null, name: null, role: null },
+      });
     }, 1000);
   };
-  console.log(auth);
+
   return (
     <nav>
       <div className="lg:hidden w-full  z-20  bg-white fixed">
@@ -38,7 +42,8 @@ const Navbar = () => {
         isSigninModalOpen={isSigninModalOpen}
         setIsSigninModalOpen={setIsSigninModalOpen}
       />
-      <div className="px-2 lg:px-10 w-full   fixed z-20 py-4  hidden lg:block shadow">
+
+      <div className="px-2 lg:px-10 w-full   fixed z-20 py-4  hidden lg:block shadow bg-white">
         <div className="flex justify-between ">
           <div>
             <h1 className=" text-4xl font-semibold">Gilman Sports Arena</h1>
@@ -83,10 +88,9 @@ const Navbar = () => {
                   Signout
                 </button>
                 <h1 className="mr-4 mt-1 text-2xl text-green-600 ">
-                  {/* {auth?.user?.name} */} KAif
+                  {auth?.user?.name}
                 </h1>
                 <Avatar>
-                  A
                   {auth?.user?.name &&
                     auth?.user?.name.substring(0, 1).toUpperCase()}
                 </Avatar>

@@ -7,19 +7,18 @@ interface userProps {
   id: null | number;
   name: null | string;
   mobile: null | number;
+  role: null | "ADMIN" | "USER";
 }
 interface AuthState {
   isLoggedin: Boolean;
-  role: null | "ADMIN" | "USER";
-  user: null | userProps;
+  user: userProps;
 }
 
 export const authAtom = atom<AuthState>({
   key: "auth",
   default: {
     isLoggedin: false,
-    role: null,
-    user: null,
+    user: { id: null, mobile: null, name: null, role: null },
   },
   effects_UNSTABLE: [persistAtom],
 });
