@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import RHFTextField from "../../../libraries/form-fields/RHFTextField";
@@ -91,29 +90,28 @@ const BookSlot = () => {
       const updatedData = {
         ...data,
         amount: 700,
-        endTime,
-        name: auth?.user?.name,
-        mobile: auth?.user?.mobile,
-        isPlayed: false,
+        endTime,       
         startTime: convertTo24Hour(data?.startTime),
         date: changeDateFormat(data?.date),
       };
 
-      const res = await createSlot(updatedData);
-      if (res?.status === 201) {
-        handleToastMessage(
-          setMessage,
-          setSeverity,
-          setOpen,
-          "Slot booked sucessfully",
-          "success",
-          true
-        );
-        const id = setTimeout(() => {
-          navigate(`/slots?date=${data?.date}`);
-        }, 2000);
+      if (auth?.user?.id) {
+        const res = await createSlot(auth?.user?.id, updatedData);
+        if (res?.status === 201) {
+          handleToastMessage(
+            setMessage,
+            setSeverity,
+            setOpen,
+            "Slot booked sucessfully",
+            "success",
+            true
+          );
+          const id = setTimeout(() => {
+            navigate(`/slots?date=${data?.date}`);
+          }, 2000);
 
-        setTimeoutId(id);
+          setTimeoutId(id);
+        }
       }
 
       setIsLoading(false);

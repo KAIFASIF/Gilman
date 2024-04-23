@@ -1,8 +1,9 @@
 import axios from "axios";
 import api from "../config/api";
 
-export const createSlot = (data: any) => {
-  return api.post(`/book-slot`, data);
+
+export const createSlot = (id:number, data: any) => {
+  return api.post(`/book-slot/${id}`, data);
 };
 
 export const saveTransaction = (data: any) => {
