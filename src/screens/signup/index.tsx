@@ -57,7 +57,10 @@ const Signup = ({ setIsModalOpen }: any) => {
         role: "USER",
         isAuthorized: true,
       };
-      const res = await axios.post("http://localhost:9000/signup", updatedData);
+      const res = await axios.post(
+        "http://localhost:9000/api/v1/user/signup",
+        updatedData
+      );
       if (res?.status === 201) {
         handleToastMessage(
           setMessage,

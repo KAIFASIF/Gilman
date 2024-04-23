@@ -8,7 +8,7 @@ const MobileNavbar = ({
   auth,
   setIsSignupModalOpen,
   setIsSigninModalOpen,
-  signout
+  signout,
 }: any) => {
   const [open, setOpen] = useState<boolean>(false);
   const navigate = useNavigate();
@@ -46,7 +46,8 @@ const MobileNavbar = ({
               key={index}
               onClick={() => navigate(ele?.path)}
               className={`flex p-2  rounded my-2 hover:bg-gray-100 
-               ${!open && "hidden"} `}
+              ${!open && "hidden"} 
+              ${ele.title === "Bookings" && !auth?.isLoggedin ? "hidden" : ""}`}
             >
               <Link onClick={() => setOpen(false)} to={ele?.path}>
                 {ele?.title}

@@ -41,8 +41,8 @@ const Home = () => {
 
 export default React.memo(Home);
 
-
-{/* <div>
+{
+  /* <div>
 <div className="relative  h-[40vh] flex flex-col   w-full">
   <div className="w-full absolute   mt-0 h-64">
     <img
@@ -74,4 +74,5 @@ export default React.memo(Home);
     />
   </div>
 </div>
-</div> */}
+</div> */
+}

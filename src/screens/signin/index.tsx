@@ -23,11 +23,12 @@ const Signin = ({ setIsModalOpen }: any) => {
   const onSubmit = async (data: any) => {
     const updatedData = { ...data, mobile: parseInt(data?.mobile) };
     try {
-      const res = await axios.post("http://localhost:9000/signin", updatedData);
+      const res = await axios.post("http://localhost:9000/api/v1/user/signin", updatedData);
       if (res?.status === 200) {
-        localStorage.setItem("token", JSON.stringify(res?.data?.token));   
+        localStorage.setItem("token", JSON.stringify(res?.data?.token));
         setAuth({
           isLoggedin: true,
+          role:res?.data?.role,
           user: res?.data,
         });
         setIsModalOpen(false);
@@ -50,7 +51,7 @@ const Signin = ({ setIsModalOpen }: any) => {
 
   return (
     <Layout isLoading={isLoading}>
-       <Toast
+      <Toast
         message={message}
         open={open}
         severity={severity}

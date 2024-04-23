@@ -7,7 +7,7 @@ import { authAtom } from "../../recoil/authAtom";
 import { menus } from "./data";
 import UserModal from "./UserModal";
 
-const Components = () => {
+const Navbar = () => {
   const [auth, setAuth] = useRecoilState(authAtom);
   const [isSignupModalOpen, setIsSignupModalOpen] = useState<boolean>(false);
   const [isSigninModalOpen, setIsSigninModalOpen] = useState<boolean>(false);
@@ -15,12 +15,10 @@ const Components = () => {
   const signout = () => {
     setTimeout(() => {
       localStorage.clear();
-      setAuth({
-        isLoggedin: false,
-        user: null,
-      });
+      setAuth({ ...auth, isLoggedin: false, role: null, user: null });
     }, 1000);
   };
+  console.log(auth);
   return (
     <nav>
       <div className="lg:hidden w-full  z-20  bg-white fixed">
@@ -49,7 +47,16 @@ const Components = () => {
             {menus &&
               menus.length > 0 &&
               menus.map((ele: any, index: number) => (
-                <Link className="mx-5 mt-2 hover:font-semibold" to={ele?.path} key={index}>
+                <Link
+                  className={`mx-5 mt-2 hover:font-semibold 
+                  ${
+                    ele.title === "Bookings" && !auth?.isLoggedin
+                      ? "hidden"
+                      : ""
+                  }`}
+                  to={ele?.path}
+                  key={index}
+                >
                   {ele?.title}
                 </Link>
               ))}
@@ -92,4 +99,4 @@ const Components = () => {
   );
 };
 
-export default Components;
+export default Navbar;

@@ -30,4 +30,10 @@ export const menus: menuTypes[] = [
     path: "/book-slot",
     icon: FiList,
   },  
+  {
+    id: 4,
+    title: "Bookings",
+    path: "/bookings",
+    icon: FiList,
+  },  
 ];
