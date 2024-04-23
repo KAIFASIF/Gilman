@@ -1,3 +1,4 @@
+
 export const convertTo24Hour = (time12h: any) => {
   const [time, modifier] = time12h.split(" ");
   let [hours, minutes] = time.split(":");
@@ -17,8 +18,6 @@ export const isUserLoggedin = (auth: any, setIsModalOpen: any) => {
   }
   return true;
 };
-
-
 
 export const sportsOption: any = [
   { id: 1, label: "Box cricket", value: "boxCricket" },
@@ -62,7 +61,6 @@ export const timeOptions: any = [
   { id: 32, label: "09:30 pm", value: "09:30 pm" },
   { id: 33, label: "10:00 pm", value: "10:00 pm" },
   { id: 34, label: "10:30 pm", value: "10:30 pm" },
-  
 ];
 
 export const calculateEndTime = (time: string, duration: number) => {
@@ -80,5 +78,58 @@ export const calculateEndTime = (time: string, duration: number) => {
   return `${formattedEndHour}:${formattedEndMinute}`;
 };
 
+export const razorPayOptionsPayload: any = {
+  key: "rzp_test_gSK9TTIhMBYv7S",
+  amount: "500",
+  currency: "INR",
+  name: "Gilman sprtts",
+  description: "Test Transaction",
+  image: "https://example.com/your_logo",
 
+  prefill: {
+    name: "Kaif",
+    email: "a@example.com",
+    contact: "9700174021",
+  },
+  notes: {
+    address: "Razorpay Corporate Office",
+  },
+  theme: {
+    color: "#3399cc",
+  },
+};
 
+// const createTranscation = async (data: any) => {
+//   try {
+//     console.log("sdsdsdssd: ", data);
+//     alert();
+//     // const res = await saveTransaction(data)
+//   } catch (error: any) {}
+// };
+
+// export const razorPayOptionsPayload = (responseData: any, bookingPayload: any): RazorpayOptions => {
+//   return {
+//     key: "rzp_test_gSK9TTIhMBYv7S",
+//     amount: "500",
+//     currency: "INR",
+//     name: "Gilman sprtts",
+//     description: "Test Transaction",
+//     image: "https://example.com/your_logo",
+//     order_id: responseData?.id,
+//     handler: (res: any) => {
+//       createTranscation({ ...res, ...bookingPayload });
+//       console.log(res);
+//     },
+//     prefill: {
+//       name: "Kaif",
+//       email: "a@example.com",
+//       contact: "9700174021",
+//     },
+//     notes: {
+//       address: "Razorpay Corporate Office",
+//     },
+//     theme: {
+//       color: "#3399cc",
+//     },
+//   };
+// };

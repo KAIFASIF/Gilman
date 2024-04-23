@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
-import axios from "axios";
 import Layout from "../../components/Layout";
 import RHFTextField from "../../libraries/form-fields/RHFTextField";
 import Button from "../../components/Button";
@@ -13,6 +12,7 @@ import {
   nameRegx,
   passwordRegx,
 } from "../../utilities/regex";
+import { signupUser } from "../../services/userApiService";
 
 const Signup = ({ setIsModalOpen }: any) => {
   const methods = useForm();
@@ -50,17 +50,14 @@ const Signup = ({ setIsModalOpen }: any) => {
         );
         return;
       }
-      const updatedData = {
+      const payload = {
         ...data,
         mobile: parseInt(data?.mobile),
         email: email ? email : null,
         role: "USER",
         isAuthorized: true,
       };
-      const res = await axios.post(
-        "http://localhost:9000/api/v1/user/signup",
-        updatedData
-      );
+      const res = await signupUser(payload);
       if (res?.status === 201) {
         handleToastMessage(
           setMessage,

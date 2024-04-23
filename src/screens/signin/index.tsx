@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
-import axios from "axios";
 import Layout from "../../components/Layout";
 import RHFTextField from "../../libraries/form-fields/RHFTextField";
 import Button from "../../components/Button";
@@ -9,6 +8,7 @@ import { useRecoilState } from "recoil";
 import { mobileRegx, passwordRegx } from "../../utilities/regex";
 import { handleToastMessage } from "../../utilities/utils";
 import Toast from "../../components/taost";
+import { signinUser } from "../../services/userApiService";
 
 const Signin = ({ setIsModalOpen }: any) => {
   const methods = useForm();
@@ -21,12 +21,9 @@ const Signin = ({ setIsModalOpen }: any) => {
   const handleToast = () => setOpen(false);
 
   const onSubmit = async (data: any) => {
-    const updatedData = { ...data, mobile: parseInt(data?.mobile) };
+    const payload = { ...data, mobile: parseInt(data?.mobile) };
     try {
-      const res = await axios.post(
-        "http://localhost:9000/api/v1/user/signin",
-        updatedData
-      );
+      const res = await signinUser(payload);
       if (res?.status === 200) {
         localStorage.setItem("token", JSON.stringify(res?.data?.token));
         setAuth({

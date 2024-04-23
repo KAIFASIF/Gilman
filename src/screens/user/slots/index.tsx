@@ -5,7 +5,7 @@ import { renderBookedSlots } from "./utils";
 import { todaysDate } from "../../../utilities/utils";
 import Layout from "../../../components/Layout";
 import { useLocation } from "react-router-dom";
-import { fetchSlots } from "../../../services/bookapi";
+import { fetchSlots } from "../../../services/bookingApiService.ts";
 import { timeSlots } from "./data";
 
 const Slots = () => {
@@ -21,16 +21,14 @@ const Slots = () => {
     setIsLoading(true);
     try {
       if (!date) return;
-
       const res = await fetchSlots(date);
-
       if (res?.status === 200) {
         setData(renderBookedSlots(res?.data));
       }
       setIsLoading(false);
     } catch (error: any) {
       setIsLoading(false);
-      setData(timeSlots)
+      setData(timeSlots);
     }
   };
 
