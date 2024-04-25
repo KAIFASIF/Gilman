@@ -5,9 +5,12 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: gilman_image
-    container_name: gilman_container
+    image: gilman_image   
+    container_name: gilman_container    
     ports:
-      - "8080:8080"
+      - 8080:8080
     volumes:
-      - .:/app/react-app
+      - './:/app/react-app'
+      - '/app/react-app/node_modules'
+    stdin_open: true   
+    command: npm run preview
