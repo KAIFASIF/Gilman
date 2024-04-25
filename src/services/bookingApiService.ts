@@ -13,6 +13,14 @@ export const getBookings = (id: number) => {
   return api.get(`/bookings/${id}`);
 };
 
+export const addSlot = () => {
+  return api.get(`/addScheduleBookings`);
+};
+
+export const deleteSlot = () => {
+  return api.get(`/reset`);
+};
+
 export const fetchSlots = (date: string) => {
   return axios.get(`http://3.36.54.14:9000/api/v1/user/slots?date=${date}`);
   // return axios.get(`http://localhost:9000/api/v1/user/slots?date=${date}`);
