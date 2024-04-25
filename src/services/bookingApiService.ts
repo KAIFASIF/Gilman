@@ -10,6 +10,6 @@ export const createBookingAndSaveTransaction = (id: any, data: any) => {
 };
 
 export const fetchSlots = (date: string) => {
-  return axios.get(`http://ec2-43-202-42-35.ap-northeast-2.compute.amazonaws.com:9000/api/v1/user/slots?date=${date}`);
+  return axios.get(`http://3.36.54.14:9000/api/v1/user/slots?date=${date}`);
   // return axios.get(`http://localhost:9000/api/v1/user/slots?date=${date}`);
 };
