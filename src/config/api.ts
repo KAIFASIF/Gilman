@@ -1,8 +1,7 @@
 import axios, { AxiosResponse } from 'axios';
 
 const api = axios.create({
-  baseURL: "ec2-43-202-42-35.ap-northeast-2.compute.amazonaws.com:9000/api/v1/user",
-  // baseURL: "http://ec2-43-202-42-35.ap-northeast-2.compute.amazonaws.com:9000/api/v1/user",
+  baseURL: "http://3.36.54.14:9000/api/v1/user",
   // baseURL: "http://localhost:9000/api/v1/user",
   headers: {
     'Content-Type': 'application/json',
