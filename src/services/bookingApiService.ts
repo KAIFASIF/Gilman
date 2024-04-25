@@ -15,10 +15,12 @@ export const getBookings = (id: number) => {
 
 export const addSlot = () => {
   return api.get(`http://3.36.54.14:9000/api/v1/user/addScheduleBookings`);
+  // return api.get(`http://localhost:9000/api/v1/user/addScheduleBookings`);
 };
 
 export const deleteSlot = () => {
   return api.get(`http://3.36.54.14:9000/api/v1/user/reset`);
+  // return api.get(`http://localhost:9000/api/v1/user/reset`);
 };
 
 export const fetchSlots = (date: string) => {
