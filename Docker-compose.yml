@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  react-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: gilman_image
+    container_name: gilman_container
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/app/react-app
