@@ -98,6 +98,7 @@ import BookingRow from "./BookingRow";
 import Button from "../../../components/Button";
 import {
   addSlot,
+  deleteAllEntities,
   deleteSlot,
   getBookingsAndUser,
 } from "../../../services/adminApiServices/bookingApiService";
@@ -110,7 +111,7 @@ const headers: string[] = [
   "Date",
   "Start time",
   "End time",
-  "Sport"
+  "Sport",
 ];
 
 const Bookings = () => {
@@ -138,6 +139,19 @@ const Bookings = () => {
       setIsLoading(false);
     }
   };
+  const delAll = async () => {
+    try {
+      setIsLoading(true);
+      const res = await deleteAllEntities();
+
+      if (res?.status === 200) {
+        alert("deleted");
+      }
+      setIsLoading(false);
+    } catch (error) {
+      setIsLoading(false);
+    }
+  };
 
   const delSlots = async () => {
     setIsLoading(true);
@@ -158,7 +172,7 @@ const Bookings = () => {
     try {
       const res = await addSlot();
       if (res?.status === 200) {
-        alert("deleted");
+        alert("Added");
       }
 
       setIsLoading(false);
@@ -171,6 +185,11 @@ const Bookings = () => {
     <Layout isLoading={isLoading}>
       <div className="flex flex-col justify-center p-10">
         <div className="flex justify-between gap-4">
+          <Button
+            label="Delete All"
+            onClick={delAll}
+            className="border-none rounded-none bg-green-600 cursor-pointer"
+          />
           <Button
             label="Add Slots"
             onClick={scheduleSlots}

@@ -1,17 +1,21 @@
-import api from "../../config/api";
+import axios from "axios";
 
 export const getBookingsAndUser = () => {
-  return api.get(`http://localhost:9000/api/v1/admin/bookings`);
-  // return api.get(`http://localhost:9000/api/v1/admin/bookings`);
+  return axios.get(`http://52.78.206.35:9000/api/v1/admin/bookings`);
+  // return axios.get(`http://localhost:9000/api/v1/admin/bookings`);
 };
 
 export const addSlot = () => {
-  // return api.get(`http://3.36.54.14:9000/api/v1/admin/addScheduleBookings`);
-  return api.get(`http://localhost:9000/api/v1/admin/addScheduleBookings`);
+  return axios.get(`http://52.78.206.35:9000/api/v1/admin/addScheduleBookings`);
+  // return axios.get(`http://localhost:9000/api/v1/admin/addScheduleBookings`);
 };
 
 export const deleteSlot = () => {
-  return api.get(`http://3.36.54.14:9000/api/v1/admin/reset`);
-  // return api.get(`http://localhost:9000/api/v1/admin/reset`);
+  return axios.get(`http://52.78.206.35:9000/api/v1/admin/reset`);
+  // return axios.get(`http://localhost:9000/api/v1/admin/reset`);
 };
 
+export const deleteAllEntities = () => {
+  return axios.get(`http://52.78.206.35:9000/api/v1/admin/del`);
+  // return axios.get(`http://localhost:9000/api/v1/admin/del`);
+};
