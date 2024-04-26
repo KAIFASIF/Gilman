@@ -16,6 +16,7 @@ function App() {
   //admin routes
   const Dashboard = lazy(() => import("./screens/admin/dashboard"));
   const AdminScreen = lazy(() => import("./screens/admin/adminscren"));
+  const AdminBookings = lazy(() => import("./screens/admin/bookings"));
 
   // user routes
   const Home = lazy(() => import("./screens/user/home"));
@@ -57,7 +58,7 @@ function App() {
                   path="/bookings"
                   element={
                     <Suspense>
-                      <Bookings />
+                      <AdminBookings />
                     </Suspense>
                   }
                 />

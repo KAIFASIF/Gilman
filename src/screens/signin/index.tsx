@@ -8,7 +8,7 @@ import { useRecoilState } from "recoil";
 import { mobileRegx, passwordRegx } from "../../utilities/regex";
 import { handleToastMessage } from "../../utilities/utils";
 import Toast from "../../components/taost";
-import { signinUser } from "../../services/userApiService";
+import { signinUser } from "../../services/userApiServices/userApiService";
 
 const Signin = ({ setIsModalOpen }: any) => {
   const methods = useForm();

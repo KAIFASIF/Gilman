@@ -10,14 +10,22 @@
         @apply font-semibold text-gray-600 text-sm
     }
 
+
+    .tableBodyTd{
+        @apply px-6 py-4 whitespace-nowrap text-sm text-start font-semibold text-gray-500 
+    }
+
     /* Hide scrollbar for Chrome, Safari and Opera */
-.container-snap::-webkit-scrollbar {
-    display: none;
+        .container-snap::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .container-snap {
+            -ms-overflow-style: none; /* IE and Edge */
+            scrollbar-width: none; /* Firefox */
+        }
 }
 
-/* Hide scrollbar for IE, Edge and Firefox */
-.container-snap {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
-}
-}
+
+

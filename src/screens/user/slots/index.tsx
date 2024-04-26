@@ -5,7 +5,7 @@ import { renderBookedSlots } from "./utils";
 import { todaysDate } from "../../../utilities/utils";
 import Layout from "../../../components/Layout";
 import { useLocation } from "react-router-dom";
-import { fetchSlots } from "../../../services/bookingApiService.ts";
+import { fetchSlots } from "../../../services/userApiServices/bookingApiService.ts";
 import { timeSlots } from "./data";
 
 const Slots = () => {

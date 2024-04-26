@@ -22,7 +22,7 @@ import Toast from "../../../components/taost";
 import {
   createBookingAndSaveTransaction,
   validateBookingAndCreateOrder,
-} from "../../../services/bookingApiService.ts";
+} from "../../../services/userApiServices/bookingApiService.ts";
 import useRazorpay, { RazorpayOptions } from "react-razorpay";
 import BookingForm from "./BookingForm";
 

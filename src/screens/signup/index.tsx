@@ -12,7 +12,7 @@ import {
   nameRegx,
   passwordRegx,
 } from "../../utilities/regex";
-import { signupUser } from "../../services/userApiService";
+import { signupUser } from "../../services/userApiServices/userApiService";
 
 const Signup = ({ setIsModalOpen }: any) => {
   const methods = useForm();
