@@ -130,7 +130,6 @@ const Bookings = () => {
       setIsLoading(true);
       const res = await getBookingsAndUser();
       if (res?.status === 200) {
-        console.log(res?.data)
         setCount(res?.data?.count);
         setData(res?.data?.bookings);
       }
