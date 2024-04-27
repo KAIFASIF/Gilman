@@ -99,8 +99,8 @@ import Button from "../../../components/Button";
 import {
   addSlot,
   deleteAllEntities,
-  deleteSlot,
-  getBookingsAndUser,
+  deleteSlots,
+  getBookingsAndUserAndTransaction,
 } from "../../../services/adminApiServices/bookingApiService";
 
 const headers: string[] = [
@@ -128,7 +128,7 @@ const Bookings = () => {
   const fetchBookingsAndTransactions = async () => {
     try {
       setIsLoading(true);
-      const res = await getBookingsAndUser();
+      const res = await getBookingsAndUserAndTransaction();
       if (res?.status === 200) {
         setCount(res?.data?.count);
         setData(res?.data?.bookings);
@@ -155,7 +155,7 @@ const Bookings = () => {
   const delSlots = async () => {
     setIsLoading(true);
     try {
-      const res = await deleteSlot();
+      const res = await deleteSlots();
       if (res?.status === 200) {
         alert("deleted");
       }

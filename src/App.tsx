@@ -15,12 +15,11 @@ function App() {
 
   //admin routes
   const Dashboard = lazy(() => import("./screens/admin/dashboard"));
-  const AdminScreen = lazy(() => import("./screens/admin/adminscren"));
   const AdminBookings = lazy(() => import("./screens/admin/bookings"));
 
   // user routes
   const Home = lazy(() => import("./screens/user/home"));
-  const Slots = lazy(() => import("./screens/user/slots"));
+  const Slots = lazy(() => import("./screens/public/slots"));
   const BookSlot = lazy(() => import("./screens/user/bookSlot"));
   const Bookings = lazy(() => import("./screens/user/bookings"));
   return (
@@ -58,7 +57,7 @@ function App() {
                   path="/bookings"
                   element={
                     <Suspense>
-                      <AdminBookings />
+                      <Bookings />
                     </Suspense>
                   }
                 />
@@ -74,15 +73,24 @@ function App() {
                     </Suspense>
                   }
                 />
-                <Route path="/" element={<Slots />} />
+
                 <Route
-                  path="/admin-screen"
+                  path="/slots"
                   element={
                     <Suspense>
-                      <AdminScreen />
+                      <Slots />
                     </Suspense>
                   }
                 />
+                <Route
+                  path="/bookings"
+                  element={
+                    <Suspense>
+                      <AdminBookings />
+                    </Suspense>
+                  }
+                />
+
                 <Route path="*" element={<Navigate to="/" replace />} />
               </Route>
             ) : (

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 
-import FilterSearch from "./FilterSearch";
-import { renderBookedSlots } from "./utils";
-import { todaysDate } from "../../../utilities/utils";
-import Layout from "../../../components/Layout";
+import FilterSearch from "./FilterSearch.tsx";
+import { renderBookedSlots } from "./utils.ts";
+import { todaysDate } from "../../../utilities/utils.ts";
+import Layout from "../../../components/Layout.tsx";
 import { useLocation } from "react-router-dom";
-import { fetchSlots } from "../../../services/userApiServices/bookingApiService.ts";
-import { timeSlots } from "./data";
+import { timeSlots } from "./data.ts";
+import { fetchSlots } from "../../../services/publicsApiServices/bookingApiService.ts";
 
 const Slots = () => {
   const urlDate = new URLSearchParams(useLocation().search).get("date");

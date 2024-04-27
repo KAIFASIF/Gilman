@@ -36,18 +36,21 @@ const RoleWrapper = () => {
   ) : (
     <div className="flex flex-col justify-between overflow-clip flex-1 z-50 w-full">
       {/* <Button
-        onClick={() => setAuth({ ...auth, isLoggedin: false,   user:{ id: null, mobile: null, name: null, role: null } })}
-        label="ROLE NULL"
-      />
-      <Button
-        onClick={() => setAuth({ ...auth, isLoggedin: true,   user:{ id: 1, mobile: 9700174021, name: "dsadas", role: "USER" } })}
-        label="ROLE USER"
-      />
-      <Button
-        onClick={() => setAuth({ ...auth, isLoggedin: true,   user:{ id: 1, mobile: 9700174021, name: "dsadas", role: "ADMIN" } })}
-        label="ROLE ADMIN"
-      /> */}
-      <nav className="">Admin</nav>
+      onClick={() => setAuth({ ...auth, isLoggedin: false,   user:{ id: null, mobile: null, name: null, role: null } })}
+      label="ROLE NULL"
+    />
+    <Button
+      onClick={() => setAuth({ ...auth, isLoggedin: true,   user:{ id: 1, mobile: 9700174021, name: "dsadas", role: "USER" } })}
+      label="ROLE USER"
+    />
+    <Button
+      onClick={() => setAuth({ ...auth, isLoggedin: true,   user:{ id: 1, mobile: 9700174021, name: "dsadas", role: "ADMIN" } })}
+      label="ROLE ADMIN"
+    /> */}
+
+      <nav className="">
+        <Navbar />
+      </nav>
       <div className="w-full mt-28">
         <Outlet />
       </div>

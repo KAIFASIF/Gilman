@@ -47,7 +47,15 @@ const MobileNavbar = ({
               onClick={() => navigate(ele?.path)}
               className={`flex p-2  rounded my-2 hover:bg-gray-100 
               ${!open && "hidden"} 
-              ${ele.title === "Bookings" && !auth?.isLoggedin ? "hidden" : ""}`}
+              ${ele.title === "Bookings" && !auth?.isLoggedin ? "hidden" : ""}
+              ${
+                ele.title === "Book Slot" &&
+                auth?.isLoggedin &&
+                auth?.user?.role === "ADMIN"
+                  ? "hidden"
+                  : ""
+              }              
+              `}
             >
               <Link onClick={() => setOpen(false)} to={ele?.path}>
                 {ele?.title}

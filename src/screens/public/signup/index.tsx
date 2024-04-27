@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
-import Layout from "../../components/Layout";
-import RHFTextField from "../../libraries/form-fields/RHFTextField";
-import Button from "../../components/Button";
-import { handleToastMessage } from "../../utilities/utils";
-import Toast from "../../components/taost";
+import Layout from "../../../components/Layout";
+import RHFTextField from "../../../libraries/form-fields/RHFTextField";
+import Button from "../../../components/Button";
+import { handleToastMessage } from "../../../utilities/utils";
+import Toast from "../../../components/taost";
 import {
   emailRegx,
   mobileRegx,
   nameNumRegx,
   nameRegx,
   passwordRegx,
-} from "../../utilities/regex";
-import { signupUser } from "../../services/userApiServices/userApiService";
+} from "../../../utilities/regex";
+import { signupUser } from "../../../services/publicsApiServices/userApiService";
 
 const Signup = ({ setIsModalOpen }: any) => {
   const methods = useForm();

@@ -58,6 +58,13 @@ const Navbar = () => {
                     ele.title === "Bookings" && !auth?.isLoggedin
                       ? "hidden"
                       : ""
+                  }
+                  ${
+                    ele.title === "Book Slot" &&
+                    auth?.isLoggedin &&
+                    auth?.user?.role === "ADMIN"
+                      ? "hidden"
+                      : ""
                   }`}
                   to={ele?.path}
                   key={index}

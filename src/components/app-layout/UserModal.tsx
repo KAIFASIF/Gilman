@@ -1,7 +1,7 @@
 import React from "react";
 import Modal from "../Modal";
-import Signup from "../../screens/signup";
-import Signin from "../../screens/signin";
+import Signup from "../../screens/public/signup";
+import Signin from "../../screens/public/signin";
 
 const UserModal = ({
   isSignupModalOpen,

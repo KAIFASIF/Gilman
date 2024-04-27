@@ -1,19 +1,17 @@
-import axios from "axios";
+import api from "../../config/api";
 
-export const getBookingsAndUser = () => {
-  return axios.get(`${import.meta.env.VITE_BASE_URL}/admin/bookings`);
+export const getBookingsAndUserAndTransaction = () => {
+  return api.get(`/admin/bookings`);
 };
 
 export const addSlot = () => {
-  return axios.get(
-    `${import.meta.env.VITE_BASE_URL}/admin/addScheduleBookings`
-  );
+  return api.get(`/admin/addScheduleBookings`);
 };
 
-export const deleteSlot = () => {
-  return axios.get(`${import.meta.env.VITE_BASE_URL}/admin/reset`);
+export const deleteSlots = () => {
+  return api.get(`/admin/deleteSlots`);
 };
 
 export const deleteAllEntities = () => {
-  return axios.get(`${import.meta.env.VITE_BASE_URL}/admin/del`);
+  return api.get(`/admin/deleteAll`);
 };

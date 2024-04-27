@@ -16,11 +16,12 @@ import {
 } from "../../../utilities/utils";
 import Layout from "../../../components/Layout";
 import Modal from "../../../components/Modal";
-import Signin from "../../signin";
+import Signin from "../../public/signin/index.tsx";
 import Toast from "../../../components/taost";
 
 import {
   createBookingAndSaveTransaction,
+  resetBookedSlot,
   validateBookingAndCreateOrder,
 } from "../../../services/userApiServices/bookingApiService.ts";
 import useRazorpay, { RazorpayOptions } from "react-razorpay";
@@ -121,12 +122,21 @@ const BookSlot = () => {
         ...razorPayOptionsPayload,
         order_id: orderResponse?.id,
         handler: (res: any) => {
-          handleTransaction(res, orderResponse, bookingPayload);
+          if (res?.status_code === 200) {
+            handleTransaction(res, orderResponse, bookingPayload);
+          }
+        },
+        modal: {
+          ondismiss: () => {
+            handleRestBookedSlot(bookingPayload);
+          },
         },
       };
+
       const rzpay = new Razorpay(options);
       rzpay.open();
     } catch (error: any) {
+      handleRestBookedSlot(bookingPayload);
       setIsLoading(false);
       handleToastMessage(
         setMessage,
@@ -136,6 +146,16 @@ const BookSlot = () => {
         "error",
         true
       );
+    }
+  };
+
+  const handleRestBookedSlot = async (data: any) => {
+    try {
+      setIsLoading(true);
+      await resetBookedSlot(data);
+      setIsLoading(false);
+    } catch (error) {
+      setIsLoading(false);
     }
   };
 
