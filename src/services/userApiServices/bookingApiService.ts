@@ -14,6 +14,5 @@ export const getBookings = (id: number) => {
 };
 
 export const fetchSlots = (date: string) => {
-  return axios.get(`http://52.78.206.35:9000/api/v1/user/slots?date=${date}`);
-  // return axios.get(`http://localhost:9000/api/v1/user/slots?date=${date}`);
+  return axios.get(`${import.meta.env.VITE_BASE_URL}/user/slots?date=${date}`);
 };

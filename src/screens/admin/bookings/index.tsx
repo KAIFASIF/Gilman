@@ -129,10 +129,10 @@ const Bookings = () => {
     try {
       setIsLoading(true);
       const res = await getBookingsAndUser();
-
       if (res?.status === 200) {
-        setCount(100);
-        setData(res?.data);
+        console.log(res?.data)
+        setCount(res?.data?.count);
+        setData(res?.data?.bookings);
       }
       setIsLoading(false);
     } catch (error) {
@@ -202,7 +202,7 @@ const Bookings = () => {
           />
         </div>
         {data.length > 0 && (
-          <div className="px-4 pt-5  lg:px-10 py-10 w-full shadow-2xl mt-10">
+          <div className="px-4 pt-5  lg:px-10 py-10 w-full shadow mt-10">
             <Table
               headers={headers}
               tableData={data}

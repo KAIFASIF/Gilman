@@ -79,7 +79,7 @@ const BookSlot = () => {
             amountPaid: orderResponse?.amount,
             bookingAmount: orderResponse?.amount,
             razorPayOrdertId: razorpay_order_id,
-            razorPayPaymemntId: razorpay_payment_id,
+            razorPayPaymentId: razorpay_payment_id,
             razorPaySignature: razorpay_signature,
           },
         };

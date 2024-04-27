@@ -55,7 +55,6 @@ const Signup = ({ setIsModalOpen }: any) => {
         mobile: parseInt(data?.mobile),
         email: email ? email : null,
         role: "USER",
-        isAuthorized: true,
       };
       const res = await signupUser(payload);
       if (res?.status === 201) {

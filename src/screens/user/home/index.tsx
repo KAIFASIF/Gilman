@@ -1,20 +1,14 @@
-import React, { useEffect } from "react";
+import React from "react";
 import BookNowSection from "./BookNowSection";
-import axios from "axios";
 
 const Home = () => {
-  useEffect(() => {
-    fetch()
-  }, [])
-  
-  const fetch =async ()=>{
-     await axios.get('http://ec2-43-202-42-35.ap-northeast-2.compute.amazonaws.com:9000/api/v1/user/test')
-     await axios.get('ec2-43-202-42-35.ap-northeast-2.compute.amazonaws.com:9000/api/v1/user/test')
-  }
+
+
   return (
     <div>
       <div className="relative  h-[40vh] flex flex-col   w-full">
         <div className="w-full absolute   mt-0 h-64">
+         
           <img
             src="assets/images/bgImage.png"
             alt=""
