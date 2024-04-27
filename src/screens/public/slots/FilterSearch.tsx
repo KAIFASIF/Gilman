@@ -1,7 +1,7 @@
 import React, { useEffect, ChangeEvent } from "react";
 import RHFTextField from "../../../libraries/form-fields/RHFTextField";
 import { FormProvider, useForm } from "react-hook-form";
-import {  todaysDate } from "../../../utilities/utils";
+import { todaysDate } from "../../../utilities/utils";
 
 interface filterSearchProps {
   fetchBookedSlots: (date: string) => void;
@@ -20,14 +20,16 @@ const FilterSearch: React.FC<filterSearchProps> = ({
   }, [urlDate]);
 
   const handleFilterDate = (e: ChangeEvent<HTMLInputElement>) => {
-    window.history.pushState({}, "", newUrl);
+    // alert()
+    // window.history.pushState({}, "", newUrl);
     const val = e.target.value;
     setValue("date", val);
     fetchBookedSlots(val);
   };
 
   const handleClearFilter = () => {
-    window.history.pushState({}, "", newUrl);
+    // alert()
+    // window.history.pushState({}, "", newUrl);
     setValue("date", todaysDate());
     fetchBookedSlots(todaysDate());
   };
@@ -35,7 +37,7 @@ const FilterSearch: React.FC<filterSearchProps> = ({
   return (
     <FormProvider {...methods}>
       <div className="flex justify-end items-center w-full ">
-        <div className="w-1/2">
+        <div className="w-full  my-4">
           <RHFTextField
             name="date"
             type="date"
@@ -47,7 +49,7 @@ const FilterSearch: React.FC<filterSearchProps> = ({
           />
         </div>
         <p
-          className="cursor-pointer text-lf font-semibold ml-4 mt-2"
+          className="cursor-pointer text-lf font-semibold ml-4 mt-2 text-blue-600"
           onClick={handleClearFilter}
         >
           Clear

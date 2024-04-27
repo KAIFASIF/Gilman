@@ -146,7 +146,7 @@ const Signup = ({ setIsModalOpen }: any) => {
             />
           </div>
 
-          <div className="flex justify-center mt-10">
+          <div className="flex justify-center mt-10 pb-4">
             <Button
               label="Submit"
               onClick={methods.handleSubmit(onSubmit)}

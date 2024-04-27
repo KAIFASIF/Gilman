@@ -42,7 +42,7 @@ const Slots = () => {
               urlDate={urlDate}
             />
           </div>
-          <div className="bg-gray-100 grid grid-cols-3 lg:grid-cols-8 gap-4 w-full p-4 lg:p-10 shadow  rounded overflow-auto h-[90vh]">
+          <div className="bg-gray-100 grid grid-cols-3 lg:grid-cols-8 gap-4 w-full p-4 lg:p-10 pb-20  shadow  rounded overflow-auto h-[90vh] lg:h-full ">
             {data.length > 0 &&
               data.map((ele: any, index: number) => (
                 <div

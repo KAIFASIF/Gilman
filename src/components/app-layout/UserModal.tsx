@@ -15,14 +15,15 @@ const UserModal = ({
       <Modal
         isModalOpen={isSignupModalOpen}
         setIsModalOpen={setIsSignupModalOpen}
-        ModalClass="w-[90%] md:w-[50%] lg:w-[30%] max-h-[90vh] md:max-h-[90vh] m-2 overflow-auto z-50 lg:mt-20 py-10"
-      >
+        ModalClass="w-[90%] md:w-[50%] lg:w-[30%] h-[90%] lg:h-[84%] m-2 overflow-auto z-50 lg:mt-20 py-10"
+        >
+        {/* ModalClass="w-[90%] md:w-[50%] lg:w-[30%] max-h-[90vh] md:max-h-[90vh] m-2 overflow-auto z-50 lg:mt-20 py-10" */}
         <Signup setIsModalOpen={setIsSignupModalOpen} />
       </Modal>
       <Modal
         isModalOpen={isSigninModalOpen}
         setIsModalOpen={setIsSigninModalOpen}
-        ModalClass="w-[90%] md:w-[50%] max-h-[50vh] lg:w-[30%] md:max-h-[50vh] z-50"
+        ModalClass="w-[90%] md:w-[50%] lg:w-[30%]  h-[50%] md:h-[40%] lg:h-[60%]  z-20 "
       >
         <Signin setIsModalOpen={setIsSigninModalOpen} />
       </Modal>
