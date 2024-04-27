@@ -19,6 +19,7 @@ const FilterSearch: React.FC<filterSearchProps> = ({
   }, [urlDate]);
 
   const handleFilterDate = (e: ChangeEvent<HTMLInputElement>) => {
+    alert()
     const val = e.target.value;
     setValue("date", val);
     fetchBookedSlots(val);

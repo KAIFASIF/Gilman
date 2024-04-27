@@ -13,7 +13,7 @@ const MobileNavbar = ({
   const [open, setOpen] = useState<boolean>(false);
   const navigate = useNavigate();
   return (
-    <div className="w-full  shadow-sm shadow-blur-md shadow-gray-400 bg-white  z-50">
+    <div className="w-full  shadow-sm shadow-blur-md shadow-gray-400 bg-white ">
       <div className="flex justify-between items-center px-5 p-4 w-full">
         <img
           src="/assets/images/gilmanLogo.png"
@@ -26,8 +26,8 @@ const MobileNavbar = ({
 
       <div
         onClick={() => setOpen(false)}
-        className={`transition-all ease-in-out duration-500 mt-100  overflow--hidden bg-white ${
-          open ? "h-full opacity-100 " : "h-0 opacity-0"
+        className={`transition-all ease-in-out duration-500  overflow--hidden bg-white ${
+          open ? "h-full opacity-100 mb-4" : "h-0 opacity-0 hidden"
         }  w-full px-10 `}
       >
         <div className={`flex ${auth?.isLoggedin ? "block" : "hidden"}`}>
@@ -63,35 +63,29 @@ const MobileNavbar = ({
             </div>
           ))}
 
-        <div className="flex mb-4">
-          {!auth?.isLoggedin && (
-            <button
-              className="ml-2 hover:font-bold cursor-pointer"
-              onClick={() => setIsSigninModalOpen(true)}
-            >
-              Signin
-            </button>
-          )}
-        </div>
-        <div className="flex ">
-          {!auth?.isLoggedin && (
-            <button
-              className="ml-2 hover:font-bold cursor-pointer mb-4"
-              onClick={() => setIsSignupModalOpen(true)}
-            >
-              Signup
-            </button>
-          )}
-        </div>
-        <div className="flex ">
-          {auth?.isLoggedin && (
-            <button
-              className="ml-2 hover:font-bold cursor-pointer mb-4"
-              onClick={signout}
-            >
-              Signout
-            </button>
-          )}
+        <div className="pb-2 flex flex-col items-start space-y-4">
+          <button
+            className={`ml-2  cursor-pointer ${auth?.isLoggedin && "hidden"}`}
+            onClick={() => setIsSigninModalOpen(true)}
+          >
+            Signin
+          </button>
+
+          <button
+            className={`ml-2 cursor-pointer mb-4 ${
+              auth?.isLoggedin && "hidden"
+            }`}
+            onClick={() => setIsSignupModalOpen(true)}
+          >
+            Signup
+          </button>
+
+          <button
+            className={`ml-2  cursor-pointer ${!auth?.isLoggedin && "hidden"} `}
+            onClick={signout}
+          >
+            Signout
+          </button>
         </div>
       </div>
     </div>

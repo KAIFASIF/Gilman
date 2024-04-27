@@ -45,7 +45,7 @@ const Bookings = () => {
     <Layout isLoading={isLoading}>
       <div className="flex flex-col justify-center p-10">
         {data.length > 0 && (
-          <div className="px-4 pt-5  lg:px-10 py-10 w-full shadow mt-10">
+          <div className=" w-full shadow">
             <Table
               headers={headers}
               tableData={data}

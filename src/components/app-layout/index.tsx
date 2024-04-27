@@ -45,7 +45,12 @@ const Navbar = () => {
 
       <div className="px-2 lg:px-10 w-full   fixed z-20 py-4  hidden lg:block shadow bg-white">
         <div className="flex justify-between ">
-          <div>
+          <div className="flex">
+            <img
+              src="/assets/images/gilmanLogo.png"
+              alt="Fashmo logo Image"
+              className="w-12 h-auto"
+            />
             <h1 className=" text-4xl font-semibold">Gilman Sports Arena</h1>
           </div>
           <div className=" hidden lg:flex">
@@ -91,7 +96,10 @@ const Navbar = () => {
             )}
             {auth?.isLoggedin && (
               <>
-                <button className="mx-5 hover:text-green-400" onClick={signout}>
+                <button
+                  className="mx-5 hover:text-green-400 -mt-2"
+                  onClick={signout}
+                >
                   Signout
                 </button>
                 <h1 className="mr-4 mt-1 text-2xl text-green-600">
