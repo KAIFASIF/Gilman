@@ -13,23 +13,18 @@ const FilterSearch: React.FC<filterSearchProps> = ({
 }) => {
   const methods = useForm();
   const { setValue } = methods;
-  const newUrl = "/slots";
 
   useEffect(() => {
     setValue("date", urlDate ? urlDate : todaysDate());
   }, [urlDate]);
 
   const handleFilterDate = (e: ChangeEvent<HTMLInputElement>) => {
-    // alert()
-    // window.history.pushState({}, "", newUrl);
     const val = e.target.value;
     setValue("date", val);
     fetchBookedSlots(val);
   };
 
   const handleClearFilter = () => {
-    // alert()
-    // window.history.pushState({}, "", newUrl);
     setValue("date", todaysDate());
     fetchBookedSlots(todaysDate());
   };

@@ -53,7 +53,7 @@ const Navbar = () => {
               menus.length > 0 &&
               menus.map((ele: any, index: number) => (
                 <Link
-                  className={`mx-5 mt-2 hover:font-semibold 
+                  className={`mx-5 mt-2 hover:text-green-400 
                   ${
                     ele.title === "Bookings" && !auth?.isLoggedin
                       ? "hidden"
@@ -76,13 +76,13 @@ const Navbar = () => {
             {!auth?.isLoggedin && (
               <>
                 <button
-                  className="mx-5 hover:font-semibold"
+                  className="mx-5 hover:text-green-400"
                   onClick={() => setIsSigninModalOpen(true)}
                 >
                   Signin
                 </button>
                 <button
-                  className="mx-5 hover:font-semibold"
+                  className="mx-5 hover:text-green-400"
                   onClick={() => setIsSignupModalOpen(true)}
                 >
                   Signup
@@ -91,10 +91,10 @@ const Navbar = () => {
             )}
             {auth?.isLoggedin && (
               <>
-                <button className="mx-5 hover:font-semibold" onClick={signout}>
+                <button className="mx-5 hover:text-green-400" onClick={signout}>
                   Signout
                 </button>
-                <h1 className="mr-4 mt-1 text-2xl text-green-600 ">
+                <h1 className="mr-4 mt-1 text-2xl text-green-600">
                   {auth?.user?.name}
                 </h1>
                 <Avatar>

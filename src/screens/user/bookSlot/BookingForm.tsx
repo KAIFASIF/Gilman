@@ -21,9 +21,12 @@ const BookingForm = ({ handleSubmit, duration, setDuration }: any) => {
     handleSubmit(data);
   };
   return (
-    <div className="bg-white p-2 lg:p-8 h-screen">
-      <div className="bg-gray-100 grid grid-cols-1 lg:grid-cols-2  p-2 md:p-8 ">
-        <div className="flex justify-center items-center w-full bg-white rounded p-4">
+    <div className="bg-gray-100 p-2 lg:p-8 h-screen  -mt-8">
+      <div className="grid grid-cols-1 lg:grid-cols-2  gap-4 p-2 md:p-8 w-full">
+        <div className="p-4 bg-white h-[54vh]">
+          <img src="assets/images/team.png" className="w-full object-cover h-[50vh]" />
+        </div>
+        <div className="flex justify-center items-center w-full bg-white rounded p-4 lg:h-[54vh]">
           <FormProvider {...methods}>
             <div className="w-full space-y-4">
               <div className="w-full flex justify-between items-center">
@@ -85,7 +88,7 @@ const BookingForm = ({ handleSubmit, duration, setDuration }: any) => {
                 </div>
               </div>
 
-              <div className="w-full mt-4">
+              <div className="w-full mt-4 mb-10">
                 <Button
                   onClick={methods.handleSubmit(onSubmit)}
                   label="Submit"
