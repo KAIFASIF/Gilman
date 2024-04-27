@@ -81,13 +81,13 @@ const Navbar = () => {
             {!auth?.isLoggedin && (
               <>
                 <button
-                  className="mx-5 hover:text-green-400"
+                  className="mx-5 hover:text-green-400 -mt-3"
                   onClick={() => setIsSigninModalOpen(true)}
                 >
-                  Signin
+                  Signins
                 </button>
                 <button
-                  className="mx-5 hover:text-green-400"
+                  className="mx-5 hover:text-green-400 -mt-3"
                   onClick={() => setIsSignupModalOpen(true)}
                 >
                   Signup
@@ -97,7 +97,7 @@ const Navbar = () => {
             {auth?.isLoggedin && (
               <>
                 <button
-                  className="mx-5 hover:text-green-400 -mt-2"
+                  className="mx-5 hover:text-green-400 -mt-3"
                   onClick={signout}
                 >
                   Signout
