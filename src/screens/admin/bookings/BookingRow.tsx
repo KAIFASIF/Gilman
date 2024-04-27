@@ -6,8 +6,6 @@ import React from "react";
 const BookingRow = (props: any) => {
   const { ele } = props;
 
-  console.log(ele)
-
   return (
     <tr className="hover:bg-gray-100 cursor-pointer" key={ele?.booking?.id}>
       <td className="tableBodyTd">{ele?.name}</td>
