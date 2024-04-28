@@ -8,6 +8,7 @@ import { getBookings } from "../../../services/userApiServices/bookingApiService
 
 const headers: string[] = [
   "Date",
+  "Hours",
   "Start time",
   "End time",
   "Sport",

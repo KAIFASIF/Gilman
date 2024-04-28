@@ -91,7 +91,7 @@
 
 // export default React.memo(Bookings);
 
-import React, { useEffect, useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import Layout from "../../../components/Layout";
 import Table from "../../../libraries/table";
 import BookingRow from "./BookingRow";
@@ -101,7 +101,11 @@ import {
   deleteAllEntities,
   deleteSlots,
   getBookingsAndUserAndTransaction,
+  getBookingsAndUserAndTransactionBymobile,
 } from "../../../services/adminApiServices/bookingApiService";
+import { FormProvider, useForm } from "react-hook-form";
+import { useDebounce } from "../../../custom-hooks/hooks";
+import RHFTextField from "../../../libraries/form-fields/RHFTextField";
 
 const headers: string[] = [
   "User",
@@ -109,21 +113,52 @@ const headers: string[] = [
   "Amount paid",
   "Payment id",
   "Date",
+  "Hours",
   "Start time",
   "End time",
   "Sport",
 ];
 
 const Bookings = () => {
+  const methods = useForm();
   const [data, setData] = useState<any>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [count, setCount] = useState<number>(100);
   const [page, setPage] = useState<number>(0);
   const [size, setSize] = useState<number>(5);
+  const [search, setSearch] = useState<number | null>(null);
+  const debounceSearch = useDebounce(search, 1000);
 
   useEffect(() => {
-    fetchBookingsAndTransactions();
-  }, [page, size]);
+    if (debounceSearch === null) {
+      fetchBookingsAndTransactions();
+    }
+  }, [page, size, debounceSearch]);
+
+  useEffect(() => {
+    if (debounceSearch != null) {
+      fetchBookingsAndTransactionsByMobile(debounceSearch);
+    }
+  }, [debounceSearch]);
+
+  const fetchBookingsAndTransactionsByMobile = async (mobile: number) => {
+    try {
+      setIsLoading(true);
+      const res = await getBookingsAndUserAndTransactionBymobile(mobile);
+      if (res?.status === 200) {
+        setCount(res?.data?.count);
+        setData(res?.data?.bookings);
+      }
+      setIsLoading(false);
+    } catch (error) {
+      setIsLoading(false);
+    }
+  };
+
+  const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
+    const val = e.target.value;
+    val ? setSearch(parseInt(e.target.value)) : setSearch(null);
+  };
 
   const fetchBookingsAndTransactions = async () => {
     try {
@@ -138,6 +173,7 @@ const Bookings = () => {
       setIsLoading(false);
     }
   };
+
   const delAll = async () => {
     try {
       setIsLoading(true);
@@ -200,16 +236,23 @@ const Bookings = () => {
             className="border-none rounded-none bg-green-600 cursor-pointer"
           />
         </div>
-        {data.length > 0 && (
-          <div className="px-4 pt-5  lg:px-10 py-10 w-full shadow mt-10">
-            <Table
-              headers={headers}
-              tableData={data}
-              TableRow={BookingRow}
-              paginationOptions={{ count, page, size, setPage, setSize }}
+        <div className="mt-10">
+          <FormProvider {...methods}>
+            <RHFTextField
+              name="mobile"
+              placeholder="search by mobile"
+              onChange={handleSearch}
             />
-          </div>
-        )}
+          </FormProvider>
+        </div>
+        <div className="w-full shadow ">
+          <Table
+            headers={headers}
+            tableData={data}
+            TableRow={BookingRow}
+            paginationOptions={{ count, page, size, setPage, setSize }}
+          />
+        </div>
       </div>
     </Layout>
   );

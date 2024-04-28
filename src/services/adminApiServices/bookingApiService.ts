@@ -4,6 +4,10 @@ export const getBookingsAndUserAndTransaction = () => {
   return api.get(`/admin/bookings`);
 };
 
+export const getBookingsAndUserAndTransactionBymobile = (mobile: number) => {
+  return api.get(`/admin/bookings/${mobile}`);
+};
+
 export const addSlot = () => {
   return api.get(`/admin/addScheduleBookings`);
 };

@@ -9,6 +9,7 @@ console.log(ele)
   return (
     <tr className="hover:bg-gray-100 cursor-pointer" key={ele?.booking?.id}>      
       <td className="tableBodyTd">{ele?.date}</td>
+      <td className="tableBodyTd">{ele?.hours} hrs</td>
       <td className="tableBodyTd">{ele?.startTime}</td>
       <td className="tableBodyTd">{ele?.endTime}</td>
       <td className="tableBodyTd">{ele?.sport}</td>

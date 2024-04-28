@@ -84,7 +84,7 @@ const Navbar = () => {
                   className="mx-5 hover:text-green-400 -mt-3"
                   onClick={() => setIsSigninModalOpen(true)}
                 >
-                  Signins
+                  Signin
                 </button>
                 <button
                   className="mx-5 hover:text-green-400 -mt-3"

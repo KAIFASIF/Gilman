@@ -13,6 +13,7 @@ const BookingRow = (props: any) => {
       <td className="tableBodyTd">{ele?.amountPaid}</td>
       <td className="tableBodyTd">{ele?.paymentId}</td>
       <td className="tableBodyTd">{ele?.booking?.date}</td>
+      <td className="tableBodyTd">{ele?.booking?.hours} hrs</td>
       <td className="tableBodyTd">{ele?.booking?.startTime}</td>
       <td className="tableBodyTd">{ele?.booking?.endTime}</td>
       <td className="tableBodyTd">{ele?.booking?.sport}</td>
