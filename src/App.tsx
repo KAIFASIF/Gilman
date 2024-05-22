@@ -22,6 +22,10 @@ function App() {
   const Slots = lazy(() => import("./screens/public/slots"));
   const BookSlot = lazy(() => import("./screens/user/bookSlot"));
   const Bookings = lazy(() => import("./screens/user/bookings"));
+
+  // Test
+  const Test = lazy(() => import("./screens/user/Test"));
+
   return (
     <RouterProvider
       router={createBrowserRouter(
@@ -116,6 +120,14 @@ function App() {
                   element={
                     <Suspense>
                       <BookSlot />
+                    </Suspense>
+                  }
+                />
+                <Route
+                  path="/t"
+                  element={
+                    <Suspense>
+                      <Test />
                     </Suspense>
                   }
                 />
